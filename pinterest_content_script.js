@@ -1,18 +1,24 @@
-var loadfunction = window.onload;
-window.onload = function(event){
-    var board_name_arr = [];
-    var node = document.getElementsByClassName('Board');
-
-    for (var i = 0; i < node.length; ++i){
-        var board_name = node[i].getElementsByClassName('boardName')[0].textContent;
-        board_name_arr[i] = board_name;
+$(function(){
+    function sendRequest(key_choice){
+        chrome.runtime.sendMessage({
+            key: key_choice
+        }, function(response){
+            alert("the response from the background: " + response.response.boardE);
+        })
     }
 
-    if (Object.keys(board_name_arr).length){
-        chrome.extension.sendRequest({board_name_arr: board_name_arr});
-    }
+    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+        alert("the message from the background page: " + request.greeing);
+        sendResponse({
+            response: "Message received"
+        });
+    });
 
-    if (loadfunction) loadfunction(event);
-}
+    $('.HomePage').mouseover(function(){
+        Mousetrap.bind('shift+e', function(e){
+            sendRequest('E');
+        });
+    });
+});
 
 
