@@ -1,3 +1,5 @@
+var all_boards = [];
+
 function save_options() {
 	var boardE = document.getElementById('board_1').value;
 	var boardD = document.getElementById('board_2').value;
@@ -6,7 +8,8 @@ function save_options() {
 	chrome.storage.sync.set({
 		boardE: boardE,
 		boardD: boardD,
-		boardC: boardC
+		boardC: boardC,
+		allBoards: all_boards
 	}, function() {
 		// Update status to let user know options were saved.
 		var status = document.getElementById('status');
@@ -18,14 +21,10 @@ function restore_options(){
 	chrome.storage.sync.get({
 	    boardE: '---',
 		boardD: '---',
-		boardC: '---'
+		boardC: '---',
+		allBoards: []
 	  }, function(items) {
-	    document.getElementById('option1').value = items.boardE;
-	    document.getElementById('option1').innerHTML = items.boardE;
-	    document.getElementById('option2').value = items.boardD;
-	    document.getElementById('option2').innerHTML = items.boardD;
-	    document.getElementById('option3').value = items.boardC;
-	    document.getElementById('option3').innerHTML = items.boardC;
+	  	format_dropdown(items);
 	  });
 }
 
@@ -48,13 +47,54 @@ function parse_xml(text){
 		board_hash[name[1]] = "";
 		name = reg.exec(text);
 	}
-	var board_keys = Object.keys(board_hash);
+	all_boards = Object.keys(board_hash);
 	reg = /"id": "(.*?)"/g;
-	for (i = 0; i < board_keys.length; i++){
+	for (i = 0; i < all_boards.length; i++){
 		var id = reg.exec(text);
-		board_hash[board_keys[i]] = id[1];
+		board_hash[all_boards[i]] = id[1];
 	}
 	return board_hash;
+}
+
+function format_dropdown(all_items){
+	all_boards = all_items.allBoards;
+	var option1 = "";
+	var option2 = "";
+	var option3 = "";
+	var boardE = '<option value="' + all_items.boardE + '" selected="selected">' + all_items.boardE + '</option>';
+	var boardD = '<option value="' + all_items.boardD + '" selected="selected">' + all_items.boardD + '</option>';
+	var boardC = '<option value="' + all_items.boardC + '" selected="selected">' + all_items.boardC + '</option>';
+
+	for (i = 0; i < all_boards.length; i++){
+		if (all_boards[i] == all_items.boardE){
+			option1 += boardE;
+		}
+		else{
+			option1 += '<option value="' + all_boards[i] + '">' + all_boards[i] + '</option>';		
+		}
+	}
+
+	for (i = 0; i < all_boards.length; i++){
+		if (all_boards[i] == all_items.boardD){
+			option2 += boardD;
+		}
+		else{
+			option2 += '<option value="' + all_boards[i] + '">' + all_boards[i] + '</option>';		
+		}
+	}
+
+	for (i = 0; i < all_boards.length; i++){
+		if (all_boards[i] == all_items.boardC){
+			option3 += boardC;
+		}
+		else{
+			option3 += '<option value="' + all_boards[i] + '">' + all_boards[i] + '</option>';		
+		}
+	}
+
+	document.getElementById('board_1').innerHTML = option1;
+	document.getElementById('board_2').innerHTML = option2;
+	document.getElementById('board_3').innerHTML = option3;
 }
 
 function format_boardname(board_hash){

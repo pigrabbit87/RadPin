@@ -11,7 +11,7 @@ function showPinterestAction(tabId) {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
   var board_name = "";
-  alert('the message wuuuuut from the content script: ' + request.key);
+  //alert('the message wuuuuut from the content script: ' + request.key);
   chrome.storage.sync.get(null, function (Items) {
     if (request.key == 'E'){
       sendResponse({
@@ -20,12 +20,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
     }
     else if (request.key == 'D'){
       sendResponse({
-        response: Items.boardE
+        response: Items.boardD
       });
     }
     else {
       sendResponse({
-        response: Items.boardE
+        response: Items.boardC
       });
     }
   });
@@ -37,7 +37,7 @@ function sendDetails(sendData){
     chrome.tabs.sendMessage(tabs[0].id, {
       greeting: sendData
     }, function(response){
-      alert("The respones from the content script: " + response.response);
+      //alert("The respones from the content script: " + response.response);
     });
   });
 }

@@ -13,8 +13,9 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.pinterest.com/*"],
-      "js": ["jquery.min.js", "mousetrap.min.js", "pinterest_content_script.js"]
+      "matches":  ["*://*.pinterest.com/*"],
+      "css":      ["content_script.css"],
+      "js":       ["jquery.min.js", "mousetrap.min.js", "pinterest_content_script.js"]
     }
   ],
 

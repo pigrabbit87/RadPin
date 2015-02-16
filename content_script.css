@@ -1,0 +1,31 @@
+.notificationBox{
+	height: 40px;
+	width: 300px;
+	padding: 10px;
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+	background-color: #444;
+	border-radius: 8px;
+	z-index: 3;
+}
+
+.noti_image{
+	display: inline-block;
+	height: 40px;
+	float: left;
+	padding-right: 10px;
+}
+
+.noti_info{
+	color: white;
+	font-family: 'Helvetica Neue','Helvetica','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ','Meiryo','ＭＳ Ｐゴシック',arial,sans-serif;
+}
+
+.pinTo{
+	font-size: 10pt;
+}
+
+.noti_board_name{
+	font-size: 15pt;
+}
