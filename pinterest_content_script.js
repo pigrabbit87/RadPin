@@ -1,14 +1,14 @@
-
 $(function(){
     var $board_name = "";
     var $pin_image = "";
 
-    function notification(){
-        $("body").append('<div class="notificationBox"><img src="' + $pin_image + '" class="noti_image"><span class="noti_info"><div class="pinTo">Pin To</div><div class="noti_board_name">'+ $board_name + '</div></span></div>');
-        $(".notificationBox").fadeOut(12000, function() { 
-            $(this).remove(); 
-        });
-    }
+    // function notification(){
+    //     $(".Module.Modal.absoluteCenter").append('<div class="notificationBox"><img src="' + $pin_image + '" class="noti_image"><span class="noti_info"><div class="pinTo">Pin To</div><div class="noti_board_name">'+ $board_name + '</div></span></div>');
+    //     $(".notificationBox").fadeOut(10000, function() { 
+    //         $('style#remove_modal').replaceWith("");
+    //         $(this).remove(); 
+    //     });
+    // }
 
     function add_style(){
         $("head").append("<style id='remove_modal'>.modalContent{visibility: hidden !important;}.modalMask{visibility: hidden !important;}");
@@ -17,7 +17,6 @@ $(function(){
     function pinCreateSucess(){
         if ($('.PinCreateSuccess').length > 0){
             $('style#remove_modal').replaceWith("");
-            notification();
         }
         else{
             setTimeout(pinCreateSucess, 150);

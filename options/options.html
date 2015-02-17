@@ -8,26 +8,40 @@
 	<body>
 		<div class="heading"> 
 			<div class="input-button-box clearfix">
-				<button id="find_board">GO!</button>
+				<button id="find_board" class="red-button">GO!</button>
 				<input type="text" id="pinterest_home" class="input-field" placeholder="Enter your pinterest user ID">
 			</div>
 		</div>
 
 		<div id="board_section" class="clearfix">
+			<div>
+				<h2>User Manual</h2>
+				<div class="description">Hi there! Welcome to RadPin. This is an extension that will help your pin experience a lot faster and smoother. </div>
+				<div class="description">Before you started, make sure you are log in to your pinterest account.</div>
+				<h3>Instructions steps by steps</h3>
+				<div class="description">1. If it is your first time here OR you have new boards added on to your account, please enter your pinterest ID to the search input above.</div>
+				<div class="description">2. Your boards will be displayed in the dropdown list. Pick the boards that you want to be associated with each key.</div>
+				<div class="description">3. Save your options.</div>
+
+
+			</div>
 			<div class="board_name_box">
-				<div><select id="board_1"><option id="option1" value=""></option></select></div>
-				<div><select id="board_2"><option id="option2" value=""></option></select></div>
-				<div><select id="board_3"><option id="option3" value=""></option></select></div>
+				<div><select id="board_1" class="dropDownList radpin-button"><option id="option1" value=""></option></select></div>
+				<div><select id="board_2" class="dropDownList radpin-button"><option id="option2" value=""></option></select></div>
+				<div><select id="board_3" class="dropDownList radpin-button"><option id="option3" value=""></option></select></div>
 			</div>
 			<div class="key_binding_box">
-				<div>SHIFT E</div>
-				<div>SHIFT D</div>
-				<div>SHIFT C</div>
+				<div class="shift-button radpin-button">SHIFT</div>
+				<div class="letter-button red-button">E</div>
+				<div class="shift-button radpin-button">SHIFT</div>
+				<div class="letter-button red-button">D</div>
+				<div class="shift-button radpin-button">SHIFT</div>
+				<div class="letter-button red-button">C</div>
 			</div>
 
+			<div id="status"></div>
+			<button id="save" class="red-button">Save</button>
 		</div>
 
-		<div id="status"></div>
-		<button id="save">Save</button>
 	</body>
 </html>
