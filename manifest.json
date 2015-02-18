@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "RadPin",
   "version": "1.0",
-  "icons": {"128": "icon-128.png"},
-  "description": "Pin your to your board with only one key stroke away!",
+  "icons": {"128": "radpin-128.png", "48": "radpin-48.png"},
+  "description": "Pin your to your board with only two key strokes away!",
 
   "background": {
     "scripts": ["background.js"]
@@ -21,9 +21,8 @@
 
   "page_action":
   {
-    "default_icon": "icon-19.png",
-    "default_title": "You're at Intercom Page",
-    "default_popup": "popup.html"
+    "default_icon": "radpin-19.png",
+    "default_title": "RadPin"
   },
 
   "permissions": [

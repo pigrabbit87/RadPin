@@ -1,14 +1,26 @@
-$(function(){
-    var $board_name = "";
-    var $pin_image = "";
+$(document).ready(function(){
+    var board_name = "";
+    var boardE = "";
+    var boardD = "";
+    var boardC = "";
 
-    // function notification(){
-    //     $(".Module.Modal.absoluteCenter").append('<div class="notificationBox"><img src="' + $pin_image + '" class="noti_image"><span class="noti_info"><div class="pinTo">Pin To</div><div class="noti_board_name">'+ $board_name + '</div></span></div>');
-    //     $(".notificationBox").fadeOut(10000, function() { 
-    //         $('style#remove_modal').replaceWith("");
-    //         $(this).remove(); 
-    //     });
-    // }
+    function sendRequest(){
+        chrome.runtime.sendMessage({
+        }, function(response){
+            boardE = response.response.boardE;
+            boardD = response.response.boardD;
+            boardC = response.response.boardC;
+        })
+    }
+
+    sendRequest();
+
+    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+        //alert("the message from the background page: " + request.greeing);
+        sendResponse({
+            response: "Message received"
+        });
+    });
 
     function add_style(){
         $("head").append("<style id='remove_modal'>.modalContent{visibility: hidden !important;}.modalMask{visibility: hidden !important;}");
@@ -35,7 +47,7 @@ $(function(){
         var all_items = ui_list.querySelectorAll(".item");
         for (i = 0; i < all_items.length; i++){
             var search_name = $.trim(all_items[i].textContent);
-            if (search_name == $board_name){
+            if (search_name == board_name){
                 all_items[i].click();
             }
         }
@@ -62,46 +74,43 @@ $(function(){
         }
 
         pin_button = pin.querySelector(".repinSendButtonWrapper").querySelector(".repinSmall");
-        $pin_image = pin.querySelector(".pinUiImage").querySelector("img").src;
         pin_button.click();
         setTimeout(click_board, 5);
         // change the css back
     }
 
-    function sendRequest(key_choice){
-        chrome.runtime.sendMessage({
-            key: key_choice
-        }, function(response){
-            $board_name = response.response;
-        })
-    }
-
-    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
-        //alert("the message from the background page: " + request.greeing);
-        sendResponse({
-            response: "Message received"
-        });
-    });
-
-
-
     $('.pinImageActionButtonWrapper').mouseover(function(e){
         Mousetrap.bind('shift+e', function(){
-            sendRequest('E');
+            board_name = boardE;
             trigger_form();
         });
         Mousetrap.bind('shift+d', function(){
-            sendRequest('D');
+            board_name = boardD;
             trigger_form();
         });
         Mousetrap.bind('shift+c', function(){
-            sendRequest('C');
+            board_name = boardC;
             trigger_form();
         });
     });
+  
+    // add the key stroke button
+    $('.App.full.AppBase').append('<div class="keyButtonWrapper"><div class="kFooterButtons Module visible"><div class="buttonInoutWrapper addButtonWrapper"><button id="btnE" class="keyStrokeFooter footerIcon Button DropdownButton Module borderless">E</button></div><div class="buttonInoutWrapper addButtonWrapper"><button id="btnD" class="keyStrokeFooter footerIcon Button DropdownButton Module borderless">D</button></div><div class="buttonInoutWrapper addButtonWrapper"><button id="btnC" class="keyStrokeFooter footerIcon Button DropdownButton Module borderless">C</button></div></div></div>');
 
+    $('#btnE').mouseover(function(){
+        $('body').append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" style="top: 61px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">'+ boardE + '</div></div>');
+    });
+
+    $('#btnD').mouseover(function(){
+        $('body').append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" style="top: 100px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">'+ boardD + '</div></div>');
+    });
+
+    $('#btnC').mouseover(function(){
+        $('body').append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" style="top: 140px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">'+ boardC + '</div></div>');
+    });
+
+    $('.buttonInoutWrapper').mouseout(function(){
+        $('.keyPopOut').replaceWith("");
+    });
 
 });
-
-
-

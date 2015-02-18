@@ -13,21 +13,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
   var board_name = "";
   //alert('the message wuuuuut from the content script: ' + request.key);
   chrome.storage.sync.get(null, function (Items) {
-    if (request.key == 'E'){
-      sendResponse({
-        response: Items.boardE
-      });
-    }
-    else if (request.key == 'D'){
-      sendResponse({
-        response: Items.boardD
-      });
-    }
-    else {
-      sendResponse({
-        response: Items.boardC
-      });
-    }
+    sendResponse({
+        response: Items
+    });
   });
   return true;
 });
