@@ -31,19 +31,19 @@ $(document).ready(function(){
             $('style#remove_modal').replaceWith("");
         }
         else{
-            setTimeout(pinCreateSucess, 150);
+            setTimeout(function(){pinCreateSucess();}, 150);
         }
     }
 
     function remove_style(){
         $('style#remove_modal').replaceWith("<style id='remove_modal'>.modalContent{visibility: hidden !important;}.PinCreateSuccess{visibility: visible !important;}");
-        setTimeout(pinCreateSucess, 50);
+        setTimeout(function(){pinCreateSucess();}, 50);
     }
 
     function pick_board(){
         // choose a board
         // click on the drop down button
-        var ui_list = document.querySelector(".ui-SelectList");
+        var ui_list = $(".section")[1];
         var all_items = ui_list.querySelectorAll(".item");
         for (i = 0; i < all_items.length; i++){
             var search_name = $.trim(all_items[i].textContent);
@@ -53,12 +53,12 @@ $(document).ready(function(){
         }
         // click on the pin button and submit the form
         document.querySelector(".formFooter").querySelector(".repinSmall").click();
-        setTimeout(remove_style, 40);
+        setTimeout(function(){remove_style();}, 40);
     }
 
     function click_board(){
         document.querySelector(".BoardPickerDropdownButton").click();
-        setTimeout(pick_board, 5);
+        setTimeout(function(){pick_board();}, 5);
     }
 
     function trigger_form(){
@@ -75,7 +75,7 @@ $(document).ready(function(){
 
         pin_button = pin.querySelector(".repinSendButtonWrapper").querySelector(".repinSmall");
         pin_button.click();
-        setTimeout(click_board, 5);
+        setTimeout(function(){click_board();}, 5);
         // change the css back
     }
 
