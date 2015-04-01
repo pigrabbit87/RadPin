@@ -16,6 +16,73 @@ body{
      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 }
 
+#about{
+     font-size: 17px;
+     right: 20px;
+     top: 17px;
+     position: absolute;
+     color: #5f5f5f;
+}
+
+#about:hover{
+     cursor: pointer;
+}
+
+#bio_box{
+     visibility: hidden;
+     position: absolute;
+     max-width: 280px;
+     right: 0px;
+     top: 55px;
+     text-align: center;
+     background: #fff;
+     border: 1px solid #ccc;
+     border-right: 0px;
+     padding: 15px;
+     box-sizing: border-box;
+     overflow: scroll;
+}
+
+#cancel_but{
+     background: url('sprite.png') -291px -201px no-repeat;
+     width: 8px;
+     height: 8px;
+     cursor: pointer;
+     display: inline-block;
+     position: absolute;
+     top: 5px;
+     left: 5px;
+}
+
+.bio_pic{
+     background-repeat: no-repeat;
+     background-position: 50%;
+     border-radius: 50%;
+     width: 200px;
+     height: 150px;
+     background-image: url('bio_pic.jpg');
+     margin: auto;
+}
+
+.bio_descrip{
+     text-align: justify;
+}
+
+.contact{
+     width: 30px;
+     height: 30px;
+     margin: 0 10px;
+     display: inline-block;
+}
+
+.linkedin{
+     background-image: url('LinkedIn.png');
+}
+
+.email{
+     background-image: url('Mail.png');
+}
+
 .board_name_box{
      display: inline-block;
      float: left;

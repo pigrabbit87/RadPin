@@ -3,6 +3,10 @@ var boardE = "";
 var boardD = "";
 var boardC = "";
 
+function fade_out(){
+	document.getElementById('status').textContent = "";
+}
+
 function save_options() {
 	var boardE1 = document.getElementById('board_1').value;
 	var boardD1 = document.getElementById('board_2').value;
@@ -53,6 +57,7 @@ function save_options() {
 		// Update status to let user know options were saved.
 		var status = document.getElementById('status');
 		status.textContent = 'Options saved. Refresh your pinterest page and happy pinning :D';
+		setTimeout(fade_out, 1500);
 	});
 }
 
@@ -127,7 +132,7 @@ function format_dropdown(all_items){
 
 	for (i = 0; i < all_boards.length; i++){
 		if (all_boards[i] == all_items.boardE1){
-			option1 += boardE;
+			option1 += boardE1;
 		}
 		else{
 			option1 += '<option value="' + all_boards[i] + '">' + all_boards[i] + '</option>';		
@@ -136,7 +141,7 @@ function format_dropdown(all_items){
 
 	for (i = 0; i < all_boards.length; i++){
 		if (all_boards[i] == all_items.boardD1){
-			option2 += boardD;
+			option2 += boardD1;
 		}
 		else{
 			option2 += '<option value="' + all_boards[i] + '">' + all_boards[i] + '</option>';		
@@ -145,7 +150,7 @@ function format_dropdown(all_items){
 
 	for (i = 0; i < all_boards.length; i++){
 		if (all_boards[i] == all_items.boardC1){
-			option3 += boardC;
+			option3 += boardC1;
 		}
 		else{
 			option3 += '<option value="' + all_boards[i] + '">' + all_boards[i] + '</option>';		
@@ -255,9 +260,19 @@ function get_board_name(){
 	});
 }
 
+function show_box(){
+	document.getElementById('bio_box').style.visibility = "visible";
+}
+
+function hide_box(){
+	document.getElementById('bio_box').style.visibility = "hidden";	
+}
+
 document.addEventListener('DOMContentLoaded', restore_options);
 
 window.onload = function(){
 	document.getElementById('find_board').addEventListener('click', get_board_name);	
 	document.getElementById('save').addEventListener('click', save_options);
+	document.getElementById('about').addEventListener('click', show_box);
+	document.getElementById('cancel_but').addEventListener('click', hide_box);
 }
