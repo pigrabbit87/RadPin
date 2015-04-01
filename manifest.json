@@ -4,6 +4,7 @@
   "version": "1.0",
   "icons": {"128": "radpin-128.png", "48": "radpin-48.png"},
   "description": "Pin your to your board with only two key strokes away!",
+  "short_name": "RadPin",
 
   "background": {
     "scripts": ["background.js"]
