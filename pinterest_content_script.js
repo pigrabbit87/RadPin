@@ -23,11 +23,11 @@ $(document).ready(function(){
     });
 
     function add_style(){
-        $("head").append("<style id='remove_modal'>.modalContent{visibility: hidden !important;}.modalMask{visibility: hidden !important;}");
+        $("head").append("<style id='remove_modal'>.modalContent{visibility: hidden !important;}.modalMask{visibility: hidden !important;}.animatingToModal{visibility: hidden !important;}");
     }
 
     function pinCreateSucess(){
-        if ($('.PinCreateSuccess').length > 0){
+        if ($('.RepinSuccessToast').length > 0){
             $('style#remove_modal').replaceWith("");
         }
         else{
@@ -35,39 +35,20 @@ $(document).ready(function(){
         }
     }
 
-    function remove_style(){
-        $('style#remove_modal').replaceWith("<style id='remove_modal'>.modalContent{visibility: hidden !important;}.PinCreateSuccess{visibility: visible !important;}");
-        setTimeout(function(){pinCreateSucess();}, 50);
-    }
-
     function pick_board(){
         if ($(".BoardPicker").length == 1){
-            // choose a board
-            // click on the drop down button
-            var ui_list = $(".section")[1];
-            var all_items = ui_list.querySelectorAll(".item");
+            var all_items = $(".allBoards")[0].querySelectorAll(".item");
             for (i = 0; i < all_items.length; i++){
-                var search_name = $.trim(all_items[i].textContent);
+                var search_name = $.trim(all_items[i].querySelector(".nameAndIcons").textContent);
                 if (search_name == board_name){
-                    all_items[i].click();
+                    all_items[i].querySelector("button").click();
+                    break;
                 }
             }
-            // click on the pin button and submit the form
-            document.querySelector(".formFooter").querySelector(".repinSmall").click();
-            setTimeout(function(){remove_style();}, 40);
+            setTimeout(function(){pinCreateSucess();}, 40);
         }
         else{
             setTimeout(function(){pick_board();}, 5);
-        }
-    }
-
-    function click_board(){
-        if ($(".PinCreate").length == 1){
-            document.querySelector(".BoardPickerDropdownButton").click();
-            setTimeout(function(){pick_board();}, 5);
-        }
-        else{
-            setTimeout(function(){click_board();}, 5);
         }
     }
 
@@ -85,7 +66,7 @@ $(document).ready(function(){
 
         pin_button = pin.querySelector(".repinSendButtonWrapper").querySelector(".repinSmall");
         pin_button.click();
-        setTimeout(function(){click_board();}, 5);
+        setTimeout(function(){pick_board();}, 5);
     }
 
     $('.pinImageActionButtonWrapper').mouseover(function(e){
