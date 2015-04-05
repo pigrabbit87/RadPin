@@ -208,6 +208,7 @@ $(document).ready(function(){
             allBoards: all_boards
         }, function(){
             $(".radpin-button").css("visibility", "hidden");
+            $("body").append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" id="hover3" style="top: 177px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">Option Saved</div></div>')
         });
     });
             
