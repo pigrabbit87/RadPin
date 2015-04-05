@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "RadPin for Pinterest",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "icons": {"128": "radpin-128.png", "48": "radpin-48.png"},
   "description": "Pin your to your board with only two key strokes away!",
   "short_name": "RadPin",
