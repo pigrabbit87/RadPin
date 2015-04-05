@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var all_boards = [];
     var board_name = "";
     var boardE = "";
     var boardD = "";
@@ -7,13 +8,29 @@ $(document).ready(function(){
     function sendRequest(){
         chrome.runtime.sendMessage({
         }, function(response){
+            all_boards = response.response.allBoards;
             boardE = response.response.boardE;
             boardD = response.response.boardD;
             boardC = response.response.boardC;
         })
     }
 
+    // function get_board_name(){
+
+    //     // save option
+    //     chrome.storage.sync.set({
+    //         boardE: boardE,
+    //         boardD: boardD,
+    //         boardC: boardC,
+    //         allBoards: all_boards
+    //     }, function() {
+    //     });
+    // }
+
     sendRequest();
+    // if (all_boards.length == 0){
+    //     get_board_name();
+    // }
 
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
         //alert("the message from the background page: " + request.greeing);
