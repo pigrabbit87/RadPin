@@ -92,15 +92,25 @@ $(document).ready(function(){
     }
 
     function add_style(){
-        $("head").append("<style id='remove_modal'>.modalContent{visibility: hidden !important;}.modalMask{visibility: hidden !important;}.animatingToModal{visibility: hidden !important;}");
+        $("#remove_modal").html('.modalContent{visibility: hidden !important;}.animatingToModal{visibility: hidden !important;}.repinBtn.loading{position: fixed !important; top: 50% !important; left: -10px !important;}');
     }
 
     function pinCreateSucess(){
-        if ($('.RepinSuccessToast').length > 0){
-            $('style#remove_modal').replaceWith("");
+        if ($('.repinBtn.success').length == 0){
+            // $('#radpin-load').css('visibility', 'hidden');
+            $('style#remove_modal').html("");
         }
         else{
             setTimeout(function(){pinCreateSucess();}, 150);
+        }
+    }
+
+    function pinCreateSuccessCheck(){
+        if ($(".repinBtn.success").length == 1){
+            pinCreateSucess();
+        }
+        else{
+            setTimeout(function(){pinCreateSuccessCheck();}, 150);
         }
     }
 
@@ -114,7 +124,7 @@ $(document).ready(function(){
                     break;
                 }
             }
-            setTimeout(function(){pinCreateSucess();}, 40);
+            setTimeout(function(){pinCreateSuccessCheck();}, 40);
         }
         else{
             setTimeout(function(){pick_board();}, 5);
@@ -123,7 +133,7 @@ $(document).ready(function(){
 
     function trigger_form(){
         add_style();
-
+        // $("#radpin-load").css('visibility', 'visible');
         // click on the repin button to get to Pick a board page
         var x = document.querySelectorAll(":hover");
         var pin_button;
@@ -208,13 +218,15 @@ $(document).ready(function(){
             allBoards: all_boards
         }, function(){
             $(".radpin-button").css("visibility", "hidden");
-            $("body").append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" id="hover3" style="top: 177px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">Option Saved</div></div>')
+            $("body").append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" id="hover3" style="top: 177px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">Option Saved. Hover over the pin and press shift + E/D/C !</div></div>')
         });
     });
             
     $('.buttonInoutWrapper').mouseout(function(){
         $('.keyPopOut').replaceWith("");
     });
+
+    $("head").append("<style id='remove_modal'></style>");
 
     sendRequest();
 
