@@ -218,7 +218,7 @@ $(document).ready(function(){
             allBoards: all_boards
         }, function(){
             $(".radpin-button").css("visibility", "hidden");
-            $("body").append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" id="hover3" style="top: 177px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">Option Saved. Hover over the pin and press shift + E/D/C !</div></div>')
+            $("body").append('<div class="positionModuleElement defaultCaret positionLeft keyPopOut" id="hover3" style="top: 177px;right: 60px;"><span class="positionModuleCaret" style="top: 7px;right: -11px;"></span><div class="buttonText">Option Saved. Refresh the page. Hover over the pin and press shift + E/D/C !</div></div>')
         });
     });
             
