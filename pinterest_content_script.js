@@ -149,11 +149,8 @@ $(document).ready(function(){
     }
 
     function format_dropdown(){
-        if (all_boards){
-            add_dropdown();
-        }else{
-            get_board_name();
-        }
+        get_board_name();
+        add_dropdown();
     }
 
     $('.pinImageActionButtonWrapper').mouseover(function(e){
