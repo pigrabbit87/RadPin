@@ -1,5 +1,3 @@
-//var _AnalyticsCode = 'UA-63529567-1';
-
 $(document).ready(function(){
     var all_boards = [];
     var board_name = "";
