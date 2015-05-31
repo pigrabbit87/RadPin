@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "RadPin for Pinterest",
-  "version": "1.2.3",
+  "version": "1.2.5",
   "icons": {"128": "radpin-128.png", "48": "radpin-48.png"},
   "description": "Pin to your board with only two key strokes away!",
   "short_name": "RadPin",
@@ -14,7 +14,7 @@
     {
       "matches":  ["*://*.pinterest.com/*"],
       "css":      ["content_script.css"],
-      "js":       ["jquery.min.js", "mousetrap.min.js", "pinterest_content_script.js"]
+      "js":       ["jquery.min.js", "mousetrap.min.js", "pinterest_content_script.js", "google-analytics-bundle.js"]
     }
   ],
 
@@ -27,6 +27,7 @@
   "permissions": [
     "*://*.pinterest.com/*",
     "tabs",
-    "storage"
+    "storage",
+    "http://www.google-analytics.com/"
   ]
 }
