@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "RadPin for Pinterest",
-  "version": "1.2.5",
-  "icons": {"128": "radpin-128.png", "48": "radpin-48.png"},
+  "version": "1.2.6",
+  "icons": {"128": "COFFEE-128.png", "48": "COFFEE.png"},
   "description": "Pin to your board with only two key strokes away!",
   "short_name": "RadPin",
 
@@ -20,14 +20,13 @@
 
   "page_action":
   {
-    "default_icon": "radpin-19.png",
+    "default_icon": "COFFEE copy.png",
     "default_title": "RadPin"
   },
 
   "permissions": [
     "*://*.pinterest.com/*",
     "tabs",
-    "storage",
-    "http://www.google-analytics.com/"
+    "storage"
   ]
 }
